@@ -1,5 +1,7 @@
 package com.company;
 
+import java.io.File;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -29,7 +31,7 @@ public class Main {
         ArrayList<String> duty1s = new ArrayList<>();
         ArrayList<String>duty2s = new ArrayList<>();
 
-
+        ArrayList<String> store = new ArrayList<>();
         p("Welcome to the resume builder");
 
             p("Enter your name:");
@@ -76,6 +78,31 @@ public class Main {
             p(person.jobs.toString());
             p("SKILLS \n:::::::::::::::::::::::::::::::::::::::::");
             p(person.skill.toString());
+
+
+//writing to the file
+        File file = new File("store.txt");
+        PrintWriter printWriter ;
+        try{
+
+            printWriter = new PrintWriter("store.txt");
+
+            store.add(person.toString());
+            store.add(person.education.toString());
+            store.add(person.jobs.toString());
+            store.add(person.skill.toString());
+
+            for(int i=0; i< store.size();i++){
+                printWriter.println(store.get(i));
+
+            }
+            printWriter.close();
+
+        }catch (Exception e1){
+            e1.printStackTrace();
+        }
+
+
     }
 
     //education history adding method
