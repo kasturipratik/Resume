@@ -62,7 +62,7 @@ public class WorkExperience {
     {   
         String display = "";
         for(int i =0;i < title.size();i++){
-            display += title.get(i)+"\n"+location.get(i)+", "+date.get(i)+"\n"+ "-Duty 1, "+duty1.get(i)+"\n- Duty2, "+ duty2.get(i) +"\n\n";
+            display += title.get(i)+"\n"+location.get(i)+", "+date.get(i)+"\n"+ "- Duty 1, "+duty1.get(i)+"\n- Duty2, "+ duty2.get(i) +"\n\n";
         }
      return display;
     }

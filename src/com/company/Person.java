@@ -7,6 +7,7 @@ public class Person {
     private  String name ;
     private String email;
 
+
     public Person() {
         this.education = new Education();
         this.jobs = new WorkExperience();
@@ -60,7 +61,7 @@ public class Person {
 
     @Override
     public String toString(){
-        String display =name + "\n"+ email;
+        String display =name + "\n"+ email +"\n\n";
         return display;
 
     }

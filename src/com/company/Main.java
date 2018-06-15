@@ -11,26 +11,60 @@ public class Main {
         Person person = new Person();
         Scanner input = new Scanner(System.in);
 
+        //storing person information
         String name="",email="";
+
+        //storing skills in key and values as skills and ratings
         HashMap<String,String> skills = new HashMap<>();
-        HashMap<String, String>user = new HashMap<>();
+
+        //storing education information
         ArrayList<String> school = new ArrayList<>();
         ArrayList<String>degree = new ArrayList<>();
         ArrayList<Integer>date = new ArrayList<>();
 
+        //storing job description
+        ArrayList<String> titles = new ArrayList<>();
+        ArrayList<String>locations = new ArrayList<>();
+        ArrayList<String>dates = new ArrayList<>();
+        ArrayList<String> duty1s = new ArrayList<>();
+        ArrayList<String>duty2s = new ArrayList<>();
+
+
         p("Welcome to the resume builder");
 
             p("Enter your name:");
-            name = input.next();
+            name = input.nextLine();
             p("Enter your email");
-            email = input.next();
+            email = input.nextLine();
 
             person.setEmail(email);
             person.setName(name);
 
             educationAdd(school,degree,date);
+            workList(titles,locations,dates,duty1s,duty2s);
+            skillsList(skills);
 
+            person.skill.setSkills(skills);
+
+            person.jobs.settitle(titles);
+            person.jobs.setLocation(locations);
+            person.jobs.setDuty2(duty2s);
+            person.jobs.setDuty1(duty1s);
+            person.jobs.setDate(dates);
+
+            person.education.setDate(date);
+            person.education.setSchool(school);
+            person.education.setDegree(degree);
+
+            p(person.toString());
+            p("EDUCATION\n::::::::::::::::::::::::::::::::::::::::::::::::");
+            p(person.education.toString());
+            p("WORK EXPERIENCE\n::::::::::::::::::::::::::::::::::::::::");
+            p(person.jobs.toString());
+            p("SKILLS \n:::::::::::::::::::::::::::::::::::::::::");
+            p(person.skill.toString());
     }
+
     public static void educationAdd(ArrayList<String> school, ArrayList<String> degree, ArrayList<Integer>date){
 
         Scanner input= new Scanner(System.in);
@@ -41,9 +75,9 @@ public class Main {
         do{
 
             p("Enter field of study: ");
-            String degrees = input.next();
+            String degrees = input.nextLine();
             p("Enter School Name: ");
-            String schools = input.next();
+            String schools = input.nextLine();
             p("Enter the date of graduation (YYYY)");
             int dates = input.nextInt();
             input.nextLine();
@@ -60,7 +94,6 @@ public class Main {
             option = input.nextLine();
             p("::::::::::::::::::::::::::::::::::");
         }while(!option.equalsIgnoreCase("n") && count <=10);
-
     }
 
     public static void workList(ArrayList<String>titles, ArrayList<String> locations, ArrayList<String>
@@ -69,20 +102,20 @@ public class Main {
         Person person = new Person();
         Scanner input= new Scanner(System.in);
         int count =1;
-        String option=""
-        p("Do you want to add your work experience");
+        String option="";
+        p("Do you want to add your work experience(y/n)");
         String work =input.nextLine();
         while(!work.equalsIgnoreCase("n")){
          p("Enter your job title: ");
-         String title = input.next();
+         String title = input.nextLine();
          p("Enter your job location: ");
-         String location = input.next();
+         String location = input.nextLine();
          p("Enter your job date");
-         String date = input.next();
+         String date = input.nextLine();
          p("Enter your main duty:");
-         String duty1 = input.next();
+         String duty1 = input.nextLine();
          p("Enter your secondary duty: ");
-         String duty2 = input.next();
+         String duty2 = input.nextLine();
 
          titles.add(title);
          locations.add(location);
@@ -97,12 +130,33 @@ public class Main {
          person.jobs.settitle(titles);
 
          count++;
-         p("Do you want to add more jobs:");
+         p("Do you want to add more jobs(y/n):");
          work = input.nextLine();
+         p(":::::::::::::::::::::::::::::::::::::::::::::::");
 
         }
+    }
 
+    public static void skillsList(HashMap<String, String> skills){
+        Person person = new Person();
+        Scanner input = new Scanner(System.in);
+        int count =1;
+        String option ="";
+        p("Please provide your skills");
+        do{
+            p("Enter your skill:");
+            String skill = input.nextLine();
+            p("Enter your rating:");
+            String rating = input.nextLine();
 
+            skills.put(skill,rating);
+            person.skill.setSkills(skills);
+
+            count++;
+            p("Do you want to add more skills (y/n)");
+            option = input.nextLine();
+            p(":::::::::::::::::::::::::::::::::::::::");
+        }while(!option.equalsIgnoreCase("n"));
     }
 
 
