@@ -37,26 +37,39 @@ public class Main {
             p("Enter your email");
             email = input.nextLine();
 
+            //storing email and name to print
             person.setEmail(email);
             person.setName(name);
 
+            //calling all the methods creted below
             educationAdd(school,degree,date);
+
             workList(titles,locations,dates,duty1s,duty2s);
+
             skillsList(skills);
 
+            //addingl all the values to the skill class and storing it as a hashmap
             person.skill.setSkills(skills);
 
+            //storing all the values in different arraylist in work experience class
             person.jobs.settitle(titles);
             person.jobs.setLocation(locations);
             person.jobs.setDuty2(duty2s);
             person.jobs.setDuty1(duty1s);
             person.jobs.setDate(dates);
 
+            //storing all the values of Education history in education class
             person.education.setDate(date);
             person.education.setSchool(school);
             person.education.setDegree(degree);
 
+
             p(person.toString());
+
+
+       /*   printing all the arraylist of education class,
+             skill class, and work  experience class
+        */
             p("EDUCATION\n::::::::::::::::::::::::::::::::::::::::::::::::");
             p(person.education.toString());
             p("WORK EXPERIENCE\n::::::::::::::::::::::::::::::::::::::::");
@@ -65,6 +78,7 @@ public class Main {
             p(person.skill.toString());
     }
 
+    //education history adding method
     public static void educationAdd(ArrayList<String> school, ArrayList<String> degree, ArrayList<Integer>date){
 
         Scanner input= new Scanner(System.in);
@@ -96,6 +110,7 @@ public class Main {
         }while(!option.equalsIgnoreCase("n") && count <=10);
     }
 
+    // work history adding method
     public static void workList(ArrayList<String>titles, ArrayList<String> locations, ArrayList<String>
                                 dates, ArrayList<String> duty1s, ArrayList<String> duty2s){
 
@@ -137,6 +152,7 @@ public class Main {
         }
     }
 
+    //skills adding method
     public static void skillsList(HashMap<String, String> skills){
         Person person = new Person();
         Scanner input = new Scanner(System.in);
@@ -159,7 +175,7 @@ public class Main {
         }while(!option.equalsIgnoreCase("n"));
     }
 
-
+    // printing short form
     public static void p(String s){
         System.out.println(s);
     }
