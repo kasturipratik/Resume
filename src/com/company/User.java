@@ -1,37 +1,27 @@
 package com.company;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class User {
-    ArrayList<String> name;
-    ArrayList<String> email;
+ HashMap<String,String> user;
 
     public User() {
-        this.name = new ArrayList<>();
-        this.email = new ArrayList<>();
+        this.user = new HashMap<String, String>();
     }
 
-    public ArrayList<String> getName() {
-        return name;
+    public HashMap<String, String> getUser() {
+        return user;
     }
 
-    public void setName(ArrayList<String> name) {
-        this.name = name;
-    }
-
-    public ArrayList<String> getEmail() {
-        return email;
-    }
-
-    public void setEmail(ArrayList<String> email) {
-        this.email = email;
+    public void setUser(HashMap<String, String> user) {
+        this.user = user;
     }
 
     @Override
     public String toString(){
         String display = "";
-        for(int i=0; i< name.size();i++){
-            display += name.get(i)+ "\n"+ email.get(i)+"\n\n";
+        for(String s: user.keySet()){
+            display +=s +" \n"+ user.get(s)+"\n\n";
         }
         return  display;
     }
